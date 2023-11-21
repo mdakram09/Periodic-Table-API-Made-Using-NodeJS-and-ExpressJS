@@ -1,6 +1,6 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const data = require("../db.json");
+const data = require('../db.json');
 
 const searchElement = (req, res) => {
   const { phase, name, group, symbol, block } = req.query;
@@ -27,10 +27,10 @@ const searchElement = (req, res) => {
       data: [...filteredData],
     });
   } else {
-    res.status(400).json({ success: false, msg: "Unknown request" });
+    res.status(400).json({ success: false, msg: 'No element found' });
   }
 };
 
-router.get("/", searchElement);
+router.get('/', searchElement);
 
 module.exports = router;

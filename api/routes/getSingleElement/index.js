@@ -1,6 +1,6 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const data = require("../db.json");
+const data = require('../db.json');
 
 const getSingleElement = (req, res) => {
   const { name } = req.params;
@@ -8,7 +8,7 @@ const getSingleElement = (req, res) => {
   if (!name) {
     return res
       .status(400)
-      .json({ success: false, msg: "please provide element name properly" });
+      .json({ success: false, msg: 'No element found with this name' });
   }
 
   const singleElementData = data.elements.filter((obj) =>
@@ -22,6 +22,6 @@ const getSingleElement = (req, res) => {
   });
 };
 
-router.get("/:name", getSingleElement);
+router.get('/:name', getSingleElement);
 
 module.exports = router;

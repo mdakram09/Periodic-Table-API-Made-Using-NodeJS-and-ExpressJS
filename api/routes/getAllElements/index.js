@@ -1,6 +1,6 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const data = require("../db.json");
+const data = require('../db.json');
 
 const getAllElements = (req, res) => {
   if (data.elements.length > 0) {
@@ -10,10 +10,12 @@ const getAllElements = (req, res) => {
       data: data.elements,
     });
   } else {
-    res.status(200).send({ status: true, results: 0, data: [] });
+    res
+      .status(400)
+      .send({ status: false, results: 0, msg: 'some error occured', data: [] });
   }
 };
 
-router.get("/", getAllElements);
+router.get('/', getAllElements);
 
 module.exports = router;
